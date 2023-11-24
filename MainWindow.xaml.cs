@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using ComprESI.Presentacion;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,7 @@ namespace ComprESI
         public MainWindow()
         {
             InitializeComponent();
+            FrameMain.Navigate(new Home());
         }
 
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
@@ -54,9 +56,9 @@ namespace ComprESI
             Tg_Btn.IsChecked = false;
         }
 
-        private void ListViewItem_KeyDown(object sender, KeyEventArgs e)
+        private void bttnCompresion_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Seleccionado!");
+            FrameMain.Navigate(new Compresion());
         }
     }
 }

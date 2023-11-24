@@ -12,14 +12,14 @@
         <!--// Toggle Button Style Template //-->
 
         <ImageBrush x:Key="tb_mouse_over"
-                    ImageSource="C:\Users\alonc\source\repos\ComprESI\assets\tgBtn_MouseOver.png"/>
+                    ImageSource="/Assets/tgBtn_MouseOver.png"/>
 
         <!--// Text font style //-->
 
         <Style x:Key="font_style" TargetType="TextBlock">
 
             <Setter Property="FontFamily"
-                    Value="C:\Users\alonc\source\repos\ComprESI\Fonts\Roboto-Light.ttf #Roboto"/>
+                    Value="Fonts\Roboto-Light.ttf #Roboto"/>
 
             <Setter Property="VerticalAlignment"
                     Value="Center"/>
@@ -46,7 +46,7 @@
             <Setter Property="Background" Value="#4A5668"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontFamily" Value="C:\Users\alonc\source\repos\ComprESI\Fonts\Roboto-Light.ttf #Roboto"/>
+            <Setter Property="FontFamily" Value="/Fonts/Roboto-Light.ttf #Roboto"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="PlacementRectangle" Value="60,0,0,0"/>
             <Setter Property="HorizontalOffset" Value="15"/>
@@ -122,8 +122,8 @@
             </Grid>
         </Grid>
 
-        <Frame x:Name="FrameMain"/>
-
+        <Frame x:Name="FrameMain"/> 
+        
         <!--// Navigation Panel //-->
 
         <Grid   x:Name="nav_pnl"
@@ -179,7 +179,7 @@
 
                         <ToggleButton.Background>
 
-                            <ImageBrush ImageSource="C:\Users\alonc\source\repos\ComprESI\assets\tgBtn_default.png"
+                            <ImageBrush ImageSource="assets\tgBtn_default.png"
                                         Stretch="None"/>
 
                         </ToggleButton.Background>
@@ -240,162 +240,84 @@
                 </Grid>
 
                 <!--// ListView with menu list items //-->
-
-                <ListView  x:Name="LV"
-                           Background="Transparent"
-                           BorderBrush="Transparent"
-                           ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-
-                    <ListViewItem HorizontalAlignment="Left"
-                                  Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" KeyDown="ListViewItem_KeyDown">
-
-                        <StackPanel Orientation="Horizontal"
-                                    Width="230">
-
-                            <Image Source="C:\Users\alonc\source\repos\ComprESI\assets\img_home.png"
-                                   Stretch="None"
-                                   Margin="12,0,0,0"/>
-
-                            <TextBlock Text="Home"
-                                       Margin="25,0,0,0"
-                                       Style="{StaticResource font_style}"/>
-
-                        </StackPanel>
-
-                        <!--// Tooltip //-->
-
-                        <ListViewItem.ToolTip>
-
+                <Menu Background="Transparent"
+      BorderBrush="Transparent"
+      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <MenuItem HorizontalAlignment="Left"
+              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal" Width="230">
+                                <Image Source="Assets/img_home.png" Stretch="None" Margin="12,0,0,0"/>
+                                <TextBlock Text="Home" Margin="25,0,0,0" Style="{StaticResource font_style}"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                        <MenuItem.ToolTip>
                             <ToolTip x:Name="tt_home"
-                                     Content="Home"
-                                     Style="{StaticResource tt_style}"/>
-
-                        </ListViewItem.ToolTip>
-
-                    </ListViewItem>
-
-                    <!--// Compresion //-->
-
-                    <ListViewItem HorizontalAlignment="Left"
-                                  Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                  >
-
-                        <StackPanel Orientation="Horizontal"
-                                    Width="230">
-
-                            <Image Source="C:\Users\alonc\source\repos\ComprESI\assets\img_home.png"
-                                   Stretch="None"
-                                   Margin="12,0,0,0"/>
-
-                            <TextBlock Text="Compresión"
-                                       Margin="25,0,0,0"
-                                       Style="{StaticResource font_style}"/>
-
-                        </StackPanel>
-
-                        <!--// Tooltip //-->
-
-                        <ListViewItem.ToolTip>
-
+                     Content="Home"
+                     Style="{StaticResource tt_style}"/>
+                        </MenuItem.ToolTip>
+                    </MenuItem>
+                    <MenuItem x:Name="bttnCompresion" HorizontalAlignment="Left"
+                              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Click="bttnCompresion_Click">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal" Width="230">
+                                <Image Source="Assets/img_home.png" Stretch="None" Margin="12,0,0,0"/>
+                                <TextBlock Text="Compresión" Margin="25,0,0,0" Style="{StaticResource font_style}"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                        <MenuItem.ToolTip>
                             <ToolTip x:Name="tt_compresion"
-                                     Content="Compresion"
-                                     Style="{StaticResource tt_style}"/>
+                     Content="Compresión"
+                     Style="{StaticResource tt_style}"/>
+                        </MenuItem.ToolTip>
+                    </MenuItem>
+                    <MenuItem HorizontalAlignment="Left"
+              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal" Width="230">
+                                <Image Source="Assets/img_home.png" Stretch="None" Margin="12,0,0,0"/>
+                                <TextBlock Text="Formato" Margin="25,0,0,0" Style="{StaticResource font_style}"/>
+                            </StackPanel>
+                        </MenuItem.Header>
 
-                        </ListViewItem.ToolTip>
-
-                    </ListViewItem>
-
-                    <!--// Contacts //-->
-
-                    <ListViewItem HorizontalAlignment="Left"
-                                  Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                  >
-
-                        <StackPanel Orientation="Horizontal"
-                                    Width="230">
-
-                            <Image Source="C:\Users\alonc\source\repos\ComprESI\assets\img_contact.png"
-                                   Stretch="None"
-                                   Margin="12,0,0,0"/>
-
-                            <TextBlock Text="Formato"
-                                       Margin="25,0,0,0"
-                                       Style="{StaticResource font_style}"/>
-
-                        </StackPanel>
-
-                        <!--// Tooltip //-->
-
-                        <ListViewItem.ToolTip>
-
+                        <MenuItem.ToolTip>
                             <ToolTip x:Name="tt_formato"
-                                     Content="Formato"
-                                     Style="{StaticResource tt_style}"/>
-
-                        </ListViewItem.ToolTip>
-
-                    </ListViewItem>
-
-
-                    <!--// Listview items style template //-->
-
-                    <ListView.ItemContainerStyle>
-
-                        <Style TargetType="ListViewItem">
-
+                     Content="Formato"
+                     Style="{StaticResource tt_style}"/>
+                        </MenuItem.ToolTip>
+                    </MenuItem>
+                    <Menu.ItemContainerStyle>
+                        <Style TargetType="{x:Type MenuItem}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="FontFamily" Value="/Fonts/Roboto-Light.ttf #Roboto"/>
+                            <Setter Property="Height" Value="50"/>
+                            <Setter Property="Margin" Value="0,0,0,0"/>
+                            <Setter Property="Padding" Value="0,0,0,0"/>
                             <Setter Property="Template">
-
                                 <Setter.Value>
-
-                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
-
-                                        <Border x:Name="Bd"
-                                                Height="50"
-                                                BorderBrush="{TemplateBinding BorderBrush}"
-                                                BorderThickness="{TemplateBinding BorderThickness}"
-                                                Background="{TemplateBinding Background}"
-                                                Padding="{TemplateBinding Padding}"
-                                                SnapsToDevicePixels="True">
-
-                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-
+                                    <ControlTemplate TargetType="{x:Type MenuItem}">
+                                        <Border Name="Border" BorderThickness="1" BorderBrush="Transparent">
+                                            <Grid>
+                                                <ContentPresenter x:Name="Icon" ContentSource="Header" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                                            </Grid>
                                         </Border>
-
                                         <ControlTemplate.Triggers>
-
-                                            <MultiTrigger>
-
-                                                <MultiTrigger.Conditions>
-
-                                                    <Condition Property="IsMouseOver" Value="True"/>
-
-                                                </MultiTrigger.Conditions>
-
-                                                <Setter Property="Background"
-                                                        TargetName="Bd"
-                                                        Value="#404D5B"/>
-
-                                                <Setter Property="BorderBrush"
-                                                        TargetName="Bd"
-                                                        Value="#404D5B"/>
-
-                                            </MultiTrigger>
-
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="Border" Property="Background" Value="#4A5668"/>
+                                            </Trigger>
+                                            <Trigger Property="IsChecked" Value="True">
+                                                <Setter TargetName="Border" Property="Background" Value="#4A5668"/>
+                                            </Trigger>
                                         </ControlTemplate.Triggers>
-
                                     </ControlTemplate>
-
                                 </Setter.Value>
-
                             </Setter>
-
                         </Style>
-
-                    </ListView.ItemContainerStyle>
-
-                </ListView>
+                    </Menu.ItemContainerStyle>
+                </Menu>
 
             </StackPanel>
 
