@@ -6,14 +6,14 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Assets\compresion.png" />
     <None Remove="Assets\formato.png" />
     <None Remove="Assets\home.png" />
-    <None Remove="Assets\img_contact.png" />
-    <None Remove="Assets\img_home.png" />
+    <None Remove="Assets\logo.png" />
     <None Remove="Assets\tgBtn_default.png" />
     <None Remove="Assets\tgBtn_MouseOver.png" />
   </ItemGroup>
@@ -22,8 +22,7 @@
     <Resource Include="Assets\compresion.png" />
     <Resource Include="Assets\formato.png" />
     <Resource Include="Assets\home.png" />
-    <Resource Include="Assets\img_contact.png" />
-    <Resource Include="Assets\img_home.png" />
+    <Resource Include="Assets\logo.png" />
     <Resource Include="Assets\tgBtn_default.png" />
     <Resource Include="Assets\tgBtn_MouseOver.png" />
   </ItemGroup>

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComprESI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800"
+        Title="ComprESI" Height="600" Width="800"
+        Icon="/Assets/logo.png"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
 
@@ -110,10 +111,14 @@
     </Window.Resources>
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="65"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
         <!--// Background Color //-->
 
-        <Grid Background="Black">
+        <Grid Background="Black" Grid.Column="0" Grid.ColumnSpan="2">
 
             <!--// Background Image //-->
 
@@ -122,14 +127,15 @@
             </Grid>
         </Grid>
 
-        <Frame x:Name="FrameMain"/> 
-        
+        <Frame x:Name="FrameMain" Grid.Column="2" NavigationUIVisibility="Hidden"/>
+
         <!--// Navigation Panel //-->
 
         <Grid   x:Name="nav_pnl"
                 HorizontalAlignment="Left"
+                Background="#2E333A"
                 Width="65"
-                Background="#2E333A">
+                Grid.Column="0" Grid.ColumnSpan="2">
 
             <StackPanel x:Name="st_pnl">
 
@@ -243,8 +249,8 @@
                 <Menu Background="Transparent"
                       BorderBrush="Transparent"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                    <MenuItem HorizontalAlignment="Left"
-                              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                    <MenuItem x:Name="bttnHome" HorizontalAlignment="Left"
+                              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Click="bttnHome_Click">
                         <MenuItem.Header>
                             <StackPanel Orientation="Horizontal" Width="230">
                                 <Image Source="Assets/home.png" Width="30" Margin="12,0,0,0"/>
@@ -323,6 +329,7 @@
 
 
         </Grid>
+
 
     </Grid>
     

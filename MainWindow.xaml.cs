@@ -25,10 +25,13 @@ namespace ComprESI
 
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
-            // Set tooltip visibility
+            Menu();
+        }
 
+        private void Menu()
+        {
             if (Tg_Btn.IsChecked == true)
-            { 
+            {
                 tt_home.Visibility = Visibility.Collapsed;
                 tt_compresion.Visibility = Visibility.Collapsed;
                 tt_formato.Visibility = Visibility.Collapsed;
@@ -44,11 +47,13 @@ namespace ComprESI
         private void Tg_Btn_Unchecked(object sender, RoutedEventArgs e)
         {
             BG.Opacity = 1;
+            FrameMain.Opacity = 1;
         }
 
         private void Tg_Btn_Checked(object sender, RoutedEventArgs e)
         {
             BG.Opacity = 0.7;
+            FrameMain.Opacity = 0.7;
         }
 
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -59,6 +64,17 @@ namespace ComprESI
         private void bttnCompresion_Click(object sender, RoutedEventArgs e)
         {
             FrameMain.Navigate(new Compresion());
+            if (Tg_Btn.IsChecked == true)
+                Tg_Btn.IsChecked = false;
+            Menu();
+        }
+
+        private void bttnHome_Click(object sender, RoutedEventArgs e)
+        {
+            FrameMain.Navigate(new Home());
+            if (Tg_Btn.IsChecked == true)
+                Tg_Btn.IsChecked = false;
+            Menu();
         }
     }
 }
