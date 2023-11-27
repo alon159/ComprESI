@@ -7,16 +7,11 @@
         mc:Ignorable="d"
         Title="ComprESI" Height="600" Width="800"
         Icon="/Assets/logo.png"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize">
     <Window.Resources>
-
-        <!--// Toggle Button Style Template //-->
-
         <ImageBrush x:Key="tb_mouse_over"
                     ImageSource="/Assets/tgBtn_MouseOver.png"/>
-
-        <!--// Text font style //-->
-
         <Style x:Key="font_style" TargetType="TextBlock">
 
             <Setter Property="FontFamily"
@@ -35,9 +30,6 @@
                     Value="20"/>
 
         </Style>
-
-        <!--// Tooltip Style Template //-->
-
         <Style TargetType="ToolTip" x:Key="tt_style">
 
             <Setter Property="Placement" Value="Right"/>
@@ -115,22 +107,13 @@
             <ColumnDefinition Width="65"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-        <!--// Background Color //-->
-
+        
         <Grid Background="Black" Grid.Column="0" Grid.ColumnSpan="2">
-
-            <!--// Background Image //-->
-
-            <Grid x:Name="BG" PreviewMouseLeftButtonDown="BG_PreviewMouseLeftButtonDown" Background="#2d6275">
-
-            </Grid>
+            <Grid x:Name="BG" PreviewMouseLeftButtonDown="BG_PreviewMouseLeftButtonDown" Background="#2d6275"/>
         </Grid>
 
         <Frame x:Name="FrameMain" Grid.Column="2" NavigationUIVisibility="Hidden"/>
-
-        <!--// Navigation Panel //-->
-
+        
         <Grid   x:Name="nav_pnl"
                 HorizontalAlignment="Left"
                 Background="#2E333A"
@@ -138,13 +121,7 @@
                 Grid.Column="0" Grid.ColumnSpan="2">
 
             <StackPanel x:Name="st_pnl">
-
-                <!--// Grid for the Menu Toggle Button //-->
-
                 <Grid Height="90">
-
-                    <!--// Menu title text //-->
-
                     <TextBlock  Grid.Row="1"
                                 Grid.Column="0"
                                 Margin="73,-20,0,0"
@@ -155,22 +132,14 @@
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 Style="{StaticResource font_style}">
-                        
-                        <!--// Shadow Effect //-->
-
                         <TextBlock.Effect>
-
                             <DropShadowEffect  BlurRadius="10"
                                                ShadowDepth="1"
                                                Direction="-90"
                                                Color="White"/>
-
                         </TextBlock.Effect>
-
                     </TextBlock>
-
-                    <!--// Toggle Button //-->
-
+                    
                     <ToggleButton x:Name="Tg_Btn"
                                   Grid.Column="0"
                                   VerticalAlignment="Center"
@@ -180,72 +149,42 @@
                                   Width="30"
                                   BorderThickness="0"
                                   Style="{StaticResource tb_style}" Unchecked="Tg_Btn_Unchecked" Checked="Tg_Btn_Checked">
-
-                        <!--// Toggle button default background image //-->
-
                         <ToggleButton.Background>
-
                             <ImageBrush ImageSource="assets\tgBtn_default.png"
                                         Stretch="None"/>
-
                         </ToggleButton.Background>
-
-                        <!--// Toggle Button - Checked, Unchecked events //-->
-
                         <ToggleButton.Triggers>
-
                             <EventTrigger RoutedEvent="ToggleButton.Unchecked">
-
                                 <BeginStoryboard>
-
                                     <Storyboard x:Name="HideStackPanel">
-
-                                        <DoubleAnimation    
-                                            
+                                        <DoubleAnimation
                                             Storyboard.TargetName="nav_pnl"
                                             Storyboard.TargetProperty="Width"
                                             BeginTime="0:0:0"
                                             From="230" To="65"
                                             Duration="0:0:0.2">
-
                                         </DoubleAnimation>
-
                                     </Storyboard>
-
                                 </BeginStoryboard>
-
                             </EventTrigger>
 
                             <EventTrigger RoutedEvent="ToggleButton.Checked">
-
                                 <BeginStoryboard>
-
                                     <Storyboard x:Name="ShowStackPanel">
-
                                         <DoubleAnimation
-                                            
                                             Storyboard.TargetName="nav_pnl"
                                             Storyboard.TargetProperty="Width"
                                             BeginTime="0:0:0"
                                             From="65" To="230"
                                             Duration="0:0:0.3">
-
                                         </DoubleAnimation>
-
                                     </Storyboard>
-
                                 </BeginStoryboard>
-
                             </EventTrigger>
-
                         </ToggleButton.Triggers>
-
-
                     </ToggleButton>
-
                 </Grid>
-
-                <!--// ListView with menu list items //-->
+                
                 <Menu Background="Transparent"
                       BorderBrush="Transparent"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -259,8 +198,8 @@
                         </MenuItem.Header>
                         <MenuItem.ToolTip>
                             <ToolTip x:Name="tt_home"
-                     Content="Home"
-                     Style="{StaticResource tt_style}"/>
+                                     Content="Home"
+                                     Style="{StaticResource tt_style}"/>
                         </MenuItem.ToolTip>
                     </MenuItem>
                     <MenuItem x:Name="bttnCompresion" HorizontalAlignment="Left"
@@ -273,23 +212,22 @@
                         </MenuItem.Header>
                         <MenuItem.ToolTip>
                             <ToolTip x:Name="tt_compresion"
-                     Content="Compresión"
-                     Style="{StaticResource tt_style}"/>
+                                     Content="Compresión"
+                                     Style="{StaticResource tt_style}"/>
                         </MenuItem.ToolTip>
                     </MenuItem>
                     <MenuItem HorizontalAlignment="Left"
-              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
                         <MenuItem.Header>
                             <StackPanel Orientation="Horizontal" Width="230">
                                 <Image Source="Assets/formato.png" Width="30" Margin="12,0,0,0"/>
                                 <TextBlock Text="Formato" Margin="25,0,0,0" Style="{StaticResource font_style}"/>
                             </StackPanel>
                         </MenuItem.Header>
-
                         <MenuItem.ToolTip>
                             <ToolTip x:Name="tt_formato"
-                     Content="Formato"
-                     Style="{StaticResource tt_style}"/>
+                                     Content="Formato"
+                                     Style="{StaticResource tt_style}"/>
                         </MenuItem.ToolTip>
                     </MenuItem>
                     <Menu.ItemContainerStyle>
@@ -324,13 +262,7 @@
                         </Style>
                     </Menu.ItemContainerStyle>
                 </Menu>
-
             </StackPanel>
-
-
         </Grid>
-
-
     </Grid>
-    
 </Window>

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ComprESI.Presentacion"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="735"
       Title="Compresion">
 
     <Grid>
@@ -13,28 +13,52 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-        <Grid Grid.Column="0" AllowDrop="True" Drop="Grid_Drop">
-            <Rectangle Fill="LightGray" Margin="20,20,20,20" Stroke="Black"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+            <MenuItem Header="Archivo">
+                <MenuItem x:Name="bttnNuevo" Header="Nuevo"/>
+                <Separator/>
+                <MenuItem x:Name="bttnAbrir" Header="Abrir"/>
+                <MenuItem x:Name="bttnGuardarMenu" Header="Guardar" IsEnabled="False" Click="bttnGuardar_Click"/>
+                <Separator/>
+                <MenuItem Header="Salir"/>
+            </MenuItem>
+            <MenuItem Header="Ayuda">
+                <MenuItem Header="Acerca de"/>
+            </MenuItem>
+        </Menu>
+        <Grid x:Name="gridDrop" Grid.Column="0" Grid.Row="1" AllowDrop="True" Drop="gridDrop_Drop" Background="#EAEAEA" Margin="20">
+            <Border BorderBrush="#007ACC" BorderThickness="2" CornerRadius="5" Margin="20">
+                <Image x:Name="imgDrop" Source="/Assets/add.png"/>
+            </Border>
         </Grid>
-        <GroupBox Grid.Column="1" Height="200" Width="300" VerticalAlignment="Top" Margin="0,50,0,0">
-            <GroupBox.Header>
-                <TextBlock Text="Configuracion de Compresión" FontSize="15" Foreground="White"/>
-            </GroupBox.Header>
-            <Grid Height="100" Margin="20,0,20,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="Algoritmo:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0"/>
-                <ComboBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Width="100"/>
-                <TextBlock Text="Nivel de Compresión:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0"/>
-                <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Width="100"/>
-            </Grid>
-        </GroupBox>
+            <Grid Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0,150,0,0" Width="300">
+            <GroupBox VerticalAlignment="Top">
+                <GroupBox.Header>
+                    <TextBlock Text="Configuración de Compresión" FontSize="15"/>
+                </GroupBox.Header>
+                <Grid Height="100">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Algoritmo:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                    <ComboBox x:Name="listAlgoritmos" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Width="100"/>
+                    <TextBlock Text="Nivel de Compresión:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                    <TextBox x:Name="txtFactor" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Width="100"/>
+                </Grid>
+            </GroupBox>
+            <ProgressBar Grid.Column="2" Width="300" Height="15" Margin="0,150,0,0"/>
+        </Grid>
+        <Button x:Name="bttnGuardar" Grid.Column="2" Grid.Row="1" Height="30" Width="100"
+                VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,50,75"
+                Content="Guardar solución" Click="bttnGuardar_Click"/>
     </Grid>
 </Page>

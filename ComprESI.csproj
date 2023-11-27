@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\add.png" />
     <None Remove="Assets\compresion.png" />
     <None Remove="Assets\formato.png" />
     <None Remove="Assets\home.png" />
@@ -19,6 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="assets\add.png" />
     <Resource Include="Assets\compresion.png" />
     <Resource Include="Assets\formato.png" />
     <Resource Include="Assets\home.png" />
