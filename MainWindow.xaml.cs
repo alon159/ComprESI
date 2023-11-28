@@ -61,7 +61,7 @@ namespace ComprESI
             Tg_Btn.IsChecked = false;
         }
 
-        private void bttnCompresion_Click(object sender, RoutedEventArgs e)
+        private void BttnCompresion_Click(object sender, RoutedEventArgs e)
         {
             FrameMain.Navigate(new Compresion());
             if (Tg_Btn.IsChecked == true)
@@ -69,7 +69,7 @@ namespace ComprESI
             Menu();
         }
 
-        private void bttnHome_Click(object sender, RoutedEventArgs e)
+        private void BttnHome_Click(object sender, RoutedEventArgs e)
         {
             FrameMain.Navigate(new Home());
             if (Tg_Btn.IsChecked == true)

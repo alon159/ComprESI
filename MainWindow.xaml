@@ -188,8 +188,8 @@
                 <Menu Background="Transparent"
                       BorderBrush="Transparent"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                    <MenuItem x:Name="bttnHome" HorizontalAlignment="Left"
-                              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Click="bttnHome_Click">
+                    <MenuItem x:Name="BttnHome" HorizontalAlignment="Left"
+                              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Click="BttnHome_Click">
                         <MenuItem.Header>
                             <StackPanel Orientation="Horizontal" Width="230">
                                 <Image Source="Assets/home.png" Width="30" Margin="12,0,0,0"/>
@@ -202,8 +202,8 @@
                                      Style="{StaticResource tt_style}"/>
                         </MenuItem.ToolTip>
                     </MenuItem>
-                    <MenuItem x:Name="bttnCompresion" HorizontalAlignment="Left"
-                              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Click="bttnCompresion_Click">
+                    <MenuItem x:Name="BttnCompresion" HorizontalAlignment="Left"
+                              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Click="BttnCompresion_Click">
                         <MenuItem.Header>
                             <StackPanel Orientation="Horizontal" Width="230">
                                 <Image Source="Assets/compresion.png" Width="30" Margin="12,0,0,0"/>
@@ -216,7 +216,7 @@
                                      Style="{StaticResource tt_style}"/>
                         </MenuItem.ToolTip>
                     </MenuItem>
-                    <MenuItem HorizontalAlignment="Left"
+                    <MenuItem x:Name="BttnFormato" HorizontalAlignment="Left"
                               Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
                         <MenuItem.Header>
                             <StackPanel Orientation="Horizontal" Width="230">
