@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="assets\add.png" />
+    <None Remove="Assets\add.png" />
     <None Remove="Assets\compresion.png" />
     <None Remove="Assets\formato.png" />
     <None Remove="Assets\home.png" />
@@ -23,18 +23,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\tgBtn_MouseOver.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="SixLabors.ImageSharp" Version="3.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="assets\add.png" />
+    <Resource Include="Assets\add.png" />
     <Resource Include="Assets\compresion.png" />
     <Resource Include="Assets\formato.png" />
     <Resource Include="Assets\home.png" />
     <Resource Include="Assets\img_background.png" />
     <Resource Include="Assets\logo.png" />
     <Resource Include="Assets\tgBtn_default.png" />
-    <Resource Include="Assets\tgBtn_MouseOver.png" />
     <Resource Include="Fonts\Roboto-Light.ttf" />
   </ItemGroup>
 
