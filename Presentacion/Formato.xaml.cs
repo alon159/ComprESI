@@ -13,6 +13,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.ColorSpaces;
+using SixLabors.ImageSharp.Formats;
+using SixLabors.ImageSharp.Formats.Bmp;
+using SixLabors.ImageSharp.Formats.Gif;
+using SixLabors.ImageSharp.Formats.Jpeg;
+using SixLabors.ImageSharp.Formats.Pbm;
+using SixLabors.ImageSharp.Formats.Png;
+using SixLabors.ImageSharp.Formats.Tga;
+using SixLabors.ImageSharp.Formats.Tiff;
+using SixLabors.ImageSharp.Formats.Webp;
+using SixLabors.ImageSharp.Processing;
 
 namespace ComprESI.Presentacion
 {
@@ -57,20 +69,21 @@ namespace ComprESI.Presentacion
 
         private void BttnGuardar_Click(object sender, RoutedEventArgs e)
         {
+            Tuple<IImageEncoder, String> config = formatoImagen();
             using SixLabors.ImageSharp.Image image = SixLabors.ImageSharp.Image.Load(rutaArchivo);
+            string[] ruta = rutaArchivo.Split('\\');
+            string[] nombre = ruta[^1].Split('.');
             //cuadro para guardar archivo
             Microsoft.Win32.SaveFileDialog dlg = new();
             //como obtener el nombre del archivo desde la ruta
-            string[] ruta = rutaArchivo.Split('\\');
-            string[] nombre = ruta[^1].Split('.');
-            dlg.FileName = nombre[0] + "_compressed"; // Nombre por defecto
-            dlg.DefaultExt = "." + nombre[1]; // Extensión por defecto
+            dlg.FileName = nombre[0] + "_formatted"; // Nombre por defecto
+            dlg.DefaultExt = "." + config.Item2; // Extensión por defecto
             dlg.Title = "Guardar imagen comprimida"; // Título de la ventana
-            dlg.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.bmp"; // Filtro de archivos
+            dlg.Filter = "Archivos de imagen|*.bmp;*.gif;*.jpeg;*.pbm;*.png;*.tiff;*.tga;*.webp"; // Filtro de archivos
             dlg.ShowDialog(); // Mostrar ventana
             try
             {
-                image.Save(dlg.FileName); // Guardar imagen
+                image.Save(dlg.FileName, config.Item1); // Guardar imagen
             }
             catch (Exception)
             {
@@ -78,6 +91,8 @@ namespace ComprESI.Presentacion
                 return;
             }
         }
+
+        //Menu
 
         private void BttnNuevo_Click(object sender, RoutedEventArgs e)
         {
@@ -94,7 +109,7 @@ namespace ComprESI.Presentacion
             Microsoft.Win32.OpenFileDialog dlg = new()
             {
                 Title = "Abrir imagen", // Título de la ventana
-                Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.bmp" // Filtro de archivos
+                Filter = "Archivos de imagen|*.bmp;*.gif;*.jpeg;*.pbm;*.png;*.tiff;*.tga;*.webp" // Filtro de archivos
             };
             dlg.ShowDialog(); // Mostrar ventana
             try
@@ -107,8 +122,40 @@ namespace ComprESI.Presentacion
             }
             catch (Exception)
             {
-                MessageBox.Show("No se pudo abrir la imagen", "Error al abrir", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
+            }
+        }
+
+        private void BttnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        //Metodos auxiliares
+
+        private Tuple<IImageEncoder,String> formatoImagen()
+        {
+            Tuple<IImageEncoder,String> config = new Tuple<IImageEncoder, String>(new BmpEncoder(), "bmp");
+            switch (ListFormatos.SelectedItem)
+            {
+                case "Bmp":
+                    return new Tuple<IImageEncoder, String>(new BmpEncoder(), "bmp");
+                case "Gif":
+                    return new Tuple<IImageEncoder, String>(new GifEncoder(), "gif");
+                case "Jpeg":
+                    return new Tuple<IImageEncoder, String>(new JpegEncoder(), "jpeg");
+                case "Pbm":
+                    return new Tuple<IImageEncoder, String>(new PbmEncoder(), "pbm");
+                case "Png":
+                    return new Tuple<IImageEncoder, String>(new PngEncoder(), "png");
+                case "Tiff":
+                    return new Tuple<IImageEncoder, String>(new TiffEncoder(), "tiff");
+                case "Tga":
+                    return new Tuple<IImageEncoder, String>(new TgaEncoder(), "tga");
+                case "WebP":
+                    return new Tuple<IImageEncoder, String>(new WebpEncoder(), "webp");
+                default:
+                    return config;
             }
         }
     }

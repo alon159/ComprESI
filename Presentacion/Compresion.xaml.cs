@@ -17,7 +17,9 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.ColorSpaces;
+using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp.Processing.Processors.Transforms;
 
 namespace ComprESI.Presentacion
 {
@@ -44,6 +46,8 @@ namespace ComprESI.Presentacion
             ListAlgoritmos.SelectedIndex = 0;
         }
 
+        //Obtener archivo
+
         private void GridDrop_Drop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -64,8 +68,11 @@ namespace ComprESI.Presentacion
             
         }
 
+        //Guardar archivo
+
         private void BttnGuardar_Click(object sender, RoutedEventArgs e)
         {
+            IResampler resampler= algoritmoCompresion();
             Int32 factor = 0;
             try
             {
@@ -79,7 +86,7 @@ namespace ComprESI.Presentacion
             using SixLabors.ImageSharp.Image image = SixLabors.ImageSharp.Image.Load(rutaArchivo);
             int width = image.Width / factor;
             int height = image.Height / factor;
-            image.Mutate(x => x.Resize(width, height));
+            image.Mutate(x => x.Resize(width, height, resampler));
 
             //cuadro para guardar archivo
             Microsoft.Win32.SaveFileDialog dlg = new();
@@ -89,7 +96,7 @@ namespace ComprESI.Presentacion
             dlg.FileName = nombre[0] + "_compressed"; // Nombre por defecto
             dlg.DefaultExt = "." + nombre[1]; // Extensión por defecto
             dlg.Title = "Guardar imagen comprimida"; // Título de la ventana
-            dlg.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.bmp"; // Filtro de archivos
+            dlg.Filter = "Archivos de imagen|*.bmp;*.gif;*.jpg;*.jpeg;*.pbm;*.png;*.tiff;*.tga;*.webp"; // Filtro de archivos
             dlg.ShowDialog(); // Mostrar ventana
             try
             {
@@ -101,6 +108,8 @@ namespace ComprESI.Presentacion
                 return;
             }
         }
+
+        //Menu
 
         private void BttnNuevo_Click(object sender, RoutedEventArgs e)
         {
@@ -118,7 +127,7 @@ namespace ComprESI.Presentacion
             Microsoft.Win32.OpenFileDialog dlg = new()
             {
                 Title = "Abrir imagen", // Título de la ventana
-                Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.bmp" // Filtro de archivos
+                Filter = "Archivos de imagen|*.bmp;*.gif;*.jpg;*.jpeg;*.pbm;*.png;*.tiff;*.tga;*.webp" // Filtro de archivos
             };
             dlg.ShowDialog(); // Mostrar ventana
             try
@@ -132,8 +141,54 @@ namespace ComprESI.Presentacion
             }
             catch (Exception)
             {
-                MessageBox.Show("No se pudo abrir la imagen", "Error al abrir", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
+            }
+        }
+
+        private void BttnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        //Metodos auxiliares
+
+        private IResampler algoritmoCompresion()
+        {
+            IResampler resampler = KnownResamplers.Bicubic;
+            switch (ListAlgoritmos.SelectedItem)
+            {
+                case "Bicubic":
+                    return KnownResamplers.Bicubic;
+                case "Box":
+                    return KnownResamplers.Box;
+                case "CatmullRom":
+                    return KnownResamplers.CatmullRom;
+                case "Hermite":
+                    return KnownResamplers.Hermite;
+                case "Lanczos2":
+                    return KnownResamplers.Lanczos2;
+                case "Lanczos3":
+                    return KnownResamplers.Lanczos3;
+                case "Lanczos5":
+                    return KnownResamplers.Lanczos5;
+                case "Lanczos8":
+                    return KnownResamplers.Lanczos8;
+                case "MitchellNetravali":
+                    return KnownResamplers.MitchellNetravali;
+                case "NearestNeighbor":
+                    return   KnownResamplers.NearestNeighbor;
+                case "Robidoux":
+                    return KnownResamplers.Robidoux;
+                case "RobidouxSharp":
+                    return KnownResamplers.RobidouxSharp;
+                case "Spline":
+                    return KnownResamplers.Spline;
+                case "Triangle":
+                    return KnownResamplers.Triangle;
+                case "Welch":
+                    return KnownResamplers.Welch;
+                default:
+                    return resampler;
             }
         }
     }
