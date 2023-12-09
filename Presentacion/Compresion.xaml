@@ -36,6 +36,7 @@
             </Border>
         </Grid>
             <Grid Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0,150,0,0" Width="300">
+            <TextBlock Text="Compresion" Foreground="White" HorizontalAlignment="Center"/>
             <GroupBox VerticalAlignment="Top">
                 <GroupBox.Header>
                     <TextBlock Text="Configuración de Compresión" FontSize="15"/>
@@ -51,7 +52,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Text="Algoritmo:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0"/>
                     <ComboBox x:Name="ListAlgoritmos" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Width="100"/>
-                    <TextBlock Text="Nivel de Compresión:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                    <TextBlock Text="Tasa de Compresión:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0"/>
                     <TextBox x:Name="TxtFactor" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Width="100"/>
                 </Grid>
             </GroupBox>

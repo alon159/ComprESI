@@ -217,7 +217,7 @@
                         </MenuItem.ToolTip>
                     </MenuItem>
                     <MenuItem x:Name="BttnFormato" HorizontalAlignment="Left"
-                              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Click="BttnFormato_Click">
                         <MenuItem.Header>
                             <StackPanel Orientation="Horizontal" Width="230">
                                 <Image Source="Assets/formato.png" Width="30" Margin="12,0,0,0"/>

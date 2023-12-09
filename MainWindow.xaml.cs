@@ -76,5 +76,13 @@ namespace ComprESI
                 Tg_Btn.IsChecked = false;
             Menu();
         }
+
+        private void BttnFormato_Click(object sender, RoutedEventArgs e)
+        {
+            FrameMain.Navigate(new Formato());
+            if (Tg_Btn.IsChecked == true)
+                Tg_Btn.IsChecked = false;
+            Menu();
+        }
     }
 }
